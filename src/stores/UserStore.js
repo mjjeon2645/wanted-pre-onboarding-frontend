@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import Store from './Store';
 
 import { apiService } from '../ApiService';
@@ -25,7 +26,15 @@ export default class UserStore extends Store {
       const status = await apiService.requestSignup(this.email, this.password);
       return status;
     } catch (error) {
-      console.log(error, 'store signup 에러');
+      return '';
+    }
+  }
+
+  async signin() {
+    try {
+      const access_token = await apiService.requestSignin(this.email, this.password);
+      return access_token;
+    } catch (error) {
       return '';
     }
   }

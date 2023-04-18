@@ -7,7 +7,7 @@ export default class TodoStore extends Store {
     super();
 
     this.todos = [];
-    this.todo = '';
+    this.newTodo = '';
   }
 
   async fetchTodos() {
@@ -18,6 +18,22 @@ export default class TodoStore extends Store {
     } catch (error) {
       //
     }
+  }
+
+  async addTodo() {
+    try {
+      const status = await apiService.addTodo(this.newTodo);
+
+      if (status === 201) {
+        this.fetchTodos();
+      }
+    } catch (error) {
+    //
+    }
+  }
+
+  setNewTodo(newTodo) {
+    this.newTodo = newTodo;
   }
 }
 

@@ -48,6 +48,18 @@ export default class TodoStore extends Store {
       //
     }
   }
+
+  async deleteTodo(id) {
+    try {
+      const status = await apiService.deleteTodo(id);
+
+      if (status === 204) {
+        this.fetchTodos();
+      }
+    } catch (error) {
+      //
+    }
+  }
 }
 
 export const todoStore = new TodoStore();

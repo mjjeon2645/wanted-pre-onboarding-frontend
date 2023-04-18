@@ -32,6 +32,10 @@ export default function TodoPage() {
     await todoStore.changeIsCompleted(todo);
   };
 
+  const handleClickDelete = async (id) => {
+    await todoStore.deleteTodo(id);
+  };
+
   return (
     <>
       <TodoInput
@@ -41,6 +45,7 @@ export default function TodoPage() {
       <TodoLists
         todos={todos}
         handleChange={handleChangeIsCompleted}
+        handleClickDelete={handleClickDelete}
       />
     </>
   );

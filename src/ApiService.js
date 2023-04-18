@@ -57,6 +57,15 @@ export default class ApiService {
 
     return status;
   }
+
+  async deleteTodo(id) {
+    const url = `${baseUrl}/todos/${id}`;
+    const { status } = await axios.delete(url, {
+      headers: { Authorization: `Bearer ${this.access_token}` },
+    });
+
+    return status;
+  }
 }
 
 export const apiService = new ApiService();

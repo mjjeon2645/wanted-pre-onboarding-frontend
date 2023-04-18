@@ -28,6 +28,15 @@ export default class ApiService {
 
     return data.access_token;
   }
+
+  async fetchTodos() {
+    const url = `${baseUrl}/todos`;
+    const response = await axios.get(url, {
+      headers: { Authorization: `Bearer ${this.access_token}` },
+    });
+
+    return response;
+  }
 }
 
 export const apiService = new ApiService();

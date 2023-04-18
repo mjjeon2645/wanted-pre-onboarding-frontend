@@ -1,3 +1,7 @@
+import { useEffect } from 'react';
+
+import { useNavigate } from 'react-router-dom';
+
 import SignupForm from '../components/SignupForm';
 
 import emailChecker from '../utils/emailChecker';
@@ -6,6 +10,14 @@ import passwordChecker from '../utils/passwordChecker';
 import useUserStore from '../hooks/useUserStore';
 
 export default function SignupPage() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('access_token')) {
+      navigate('/todo');
+    }
+  }, []);
+
   const userStore = useUserStore();
 
   const { email, password } = userStore;

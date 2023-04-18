@@ -1,10 +1,20 @@
+import { useEffect } from 'react';
+
 import { Routes, Route } from 'react-router-dom';
 
 import SigninPage from './pages/SigninPage';
 import SignupPage from './pages/SignupPage';
 import TodoPage from './pages/TodoPage';
 
+import { apiService } from './ApiService';
+
 export default function App() {
+  const accessToken = localStorage.getItem('access_token');
+
+  useEffect(() => {
+    apiService.setAccessToken(accessToken);
+  }, [accessToken]);
+
   return (
     <div>
       <Routes>

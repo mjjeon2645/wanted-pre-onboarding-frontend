@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 
+import { useNavigate } from 'react-router-dom';
 import TodoInput from '../components/TodoInput';
 import TodoLists from '../components/TodoLists';
 
 import useTodoStore from '../hooks/useTodoStore';
 
 export default function TodoPage() {
+  const navigate = useNavigate();
   const todoStore = useTodoStore();
 
   const fetchTodos = async () => {
@@ -13,11 +15,16 @@ export default function TodoPage() {
     return data;
   };
 
+  const { todos } = todoStore;
+
   useEffect(() => {
+    if (!localStorage.getItem('access_token')) {
+      navigate('/signin');
+      return;
+    }
+
     fetchTodos();
   }, []);
-
-  const { todos } = todoStore;
 
   const handleChangeTodoInput = (event) => {
     const { value } = event.target;

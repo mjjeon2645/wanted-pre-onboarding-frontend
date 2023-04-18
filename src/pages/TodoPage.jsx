@@ -6,8 +6,6 @@ import useTodoStore from '../hooks/useTodoStore';
 export default function TodoPage() {
   const todoStore = useTodoStore();
 
-  const { todos } = todoStore;
-
   const fetchTodos = async () => {
     const data = await todoStore.fetchTodos();
     return data;
@@ -17,9 +15,24 @@ export default function TodoPage() {
     fetchTodos();
   }, []);
 
+  const { todos } = todoStore;
+  console.log(todos);
+
+  const handleChangeTodoInput = (event) => {
+    const { value } = event.target;
+    todoStore.setNewTodo(value);
+  };
+
+  const handleClickAddTodo = async () => {
+    await todoStore.addTodo();
+  };
+
   return (
     <>
-      <TodoInput />
+      <TodoInput
+        handleChangeTodoInput={handleChangeTodoInput}
+        handleClickAddTodo={handleClickAddTodo}
+      />
       <TodoLists todos={todos} />
     </>
   );

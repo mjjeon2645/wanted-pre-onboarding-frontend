@@ -31,11 +31,19 @@ export default class ApiService {
 
   async fetchTodos() {
     const url = `${baseUrl}/todos`;
-    const response = await axios.get(url, {
+    const { data } = await axios.get(url, {
       headers: { Authorization: `Bearer ${this.access_token}` },
     });
 
-    return response;
+    return data;
+  }
+
+  async addTodo(newTodo) {
+    const url = `${baseUrl}/todos`;
+    const { status } = await axios.post(url, { todo: newTodo }, {
+      headers: { Authorization: `Bearer ${this.access_token}` },
+    });
+    return status;
   }
 }
 

@@ -1,23 +1,23 @@
 import EmailField from './commons/EmailField';
 import PasswordField from './commons/PasswordField';
 
-export default function SigninForm({
+export default function SignupForm({
   handleChangeEmail,
   handleChangePassword,
   handleClickSubmit,
   isValid,
 }) {
   return (
-    <form id="signin-form">
+    <form>
       <EmailField handleChangeEmail={handleChangeEmail} />
       <PasswordField handleChangePassword={handleChangePassword} />
       <button
         type="submit"
-        data-testid="signin-button"
+        data-testid="signup-button"
         onClick={handleClickSubmit}
         disabled={!isValid}
       >
-        로그인
+        회원가입
       </button>
     </form>
   );

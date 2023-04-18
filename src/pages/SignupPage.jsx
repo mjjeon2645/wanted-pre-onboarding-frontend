@@ -1,11 +1,11 @@
-import SigninForm from '../components/SigninForm';
+import SignupForm from '../components/SignupForm';
 
 import emailChecker from '../utils/emailChecker';
 import passwordChecker from '../utils/passwordChecker';
 
 import useUserStore from '../hooks/useUserStore';
 
-export default function SigninPage() {
+export default function SignupPage() {
   const userStore = useUserStore();
 
   const { email, password } = userStore;
@@ -22,11 +22,12 @@ export default function SigninPage() {
 
   const handleClickSubmit = (event) => {
     event.preventDefault();
+    userStore.signup();
   };
 
   return (
     <div>
-      <SigninForm
+      <SignupForm
         handleChangeEmail={handleChangeEmail}
         handleChangePassword={handleChangePassword}
         handleClickSubmit={handleClickSubmit}

@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import { apiService } from '../ApiService';
 
 import Store from './Store';
@@ -34,6 +35,18 @@ export default class TodoStore extends Store {
 
   setNewTodo(newTodo) {
     this.newTodo = newTodo;
+  }
+
+  async changeIsCompleted(todo) {
+    try {
+      const status = await apiService.changeIsCompleted(todo);
+
+      if (status === 200) {
+        this.fetchTodos();
+      }
+    } catch (error) {
+      //
+    }
   }
 }
 

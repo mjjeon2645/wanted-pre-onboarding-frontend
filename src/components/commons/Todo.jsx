@@ -1,8 +1,12 @@
-export default function Todo({ todo }) {
+export default function Todo({ handleChange, todo }) {
   return (
     <li>
       <label>
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          onChange={() => handleChange(todo)}
+          checked={todo.isCompleted}
+        />
         <span>{todo.todo}</span>
       </label>
       <button type="button" data-testid="modify-button">수정</button>

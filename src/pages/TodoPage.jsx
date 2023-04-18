@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
+
 import TodoInput from '../components/TodoInput';
 import TodoLists from '../components/TodoLists';
+
 import useTodoStore from '../hooks/useTodoStore';
 
 export default function TodoPage() {
@@ -16,7 +18,6 @@ export default function TodoPage() {
   }, []);
 
   const { todos } = todoStore;
-  console.log(todos);
 
   const handleChangeTodoInput = (event) => {
     const { value } = event.target;
@@ -27,13 +28,20 @@ export default function TodoPage() {
     await todoStore.addTodo();
   };
 
+  const handleChangeIsCompleted = async (todo) => {
+    await todoStore.changeIsCompleted(todo);
+  };
+
   return (
     <>
       <TodoInput
         handleChangeTodoInput={handleChangeTodoInput}
         handleClickAddTodo={handleClickAddTodo}
       />
-      <TodoLists todos={todos} />
+      <TodoLists
+        todos={todos}
+        handleChange={handleChangeIsCompleted}
+      />
     </>
   );
 }

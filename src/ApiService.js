@@ -25,8 +25,10 @@ export default class ApiService {
   async requestSignin(email, password) {
     const url = `${baseUrl}/auth/signin`;
     const { data } = await axios.post(url, { email, password });
+    const { access_token } = data;
+    this.setAccessToken(access_token);
 
-    return data.access_token;
+    return access_token;
   }
 
   async fetchTodos() {

@@ -45,6 +45,18 @@ export default class ApiService {
     });
     return status;
   }
+
+  async changeIsCompleted(todo) {
+    const url = `${baseUrl}/todos/${todo.id}`;
+    const { status } = await axios.put(url, {
+      todo: todo.todo,
+      isCompleted: !todo.isCompleted,
+    }, {
+      headers: { Authorization: `Bearer ${this.access_token}` },
+    });
+
+    return status;
+  }
 }
 
 export const apiService = new ApiService();

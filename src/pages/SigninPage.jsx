@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import SigninForm from '../components/SigninForm';
 
 import emailChecker from '../utils/emailChecker';
@@ -7,6 +8,8 @@ import useUserStore from '../hooks/useUserStore';
 
 export default function SigninPage() {
   const userStore = useUserStore();
+
+  const navigate = useNavigate();
 
   const { email, password } = userStore;
 
@@ -20,8 +23,16 @@ export default function SigninPage() {
     userStore.setPassword(value);
   };
 
-  const handleClickSubmit = (event) => {
+  const handleClickSubmit = async (event) => {
     event.preventDefault();
+    const accessToken = await userStore.signin();
+
+    if (!accessToken) {
+      return;
+    }
+
+    window.localStorage.setItem('access_token', accessToken);
+    navigate('/todo');
   };
 
   return (

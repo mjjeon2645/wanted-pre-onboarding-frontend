@@ -27,6 +27,7 @@ export default class TodoStore extends Store {
 
       if (status === 201) {
         this.fetchTodos();
+        this.clearState();
       }
     } catch (error) {
     //
@@ -71,6 +72,10 @@ export default class TodoStore extends Store {
     } catch (error) {
       //
     }
+  }
+
+  clearState() {
+    this.newTodo = '';
   }
 }
 

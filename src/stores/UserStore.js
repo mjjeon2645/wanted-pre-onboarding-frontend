@@ -24,6 +24,7 @@ export default class UserStore extends Store {
   async signup() {
     try {
       const status = await apiService.requestSignup(this.email, this.password);
+      this.clearState();
       return status;
     } catch (error) {
       return '';
@@ -33,10 +34,16 @@ export default class UserStore extends Store {
   async signin() {
     try {
       const access_token = await apiService.requestSignin(this.email, this.password);
+      this.clearState();
       return access_token;
     } catch (error) {
       return '';
     }
+  }
+
+  clearState() {
+    this.email = '';
+    this.password = '';
   }
 }
 

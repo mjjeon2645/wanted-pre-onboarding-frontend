@@ -1,7 +1,13 @@
-export default function TodoInput({ handleChangeTodoInput, handleClickAddTodo }) {
+export default function TodoInput({
+  handleChangeTodoInput, handleClickAddTodo, value,
+}) {
   return (
     <>
-      <input data-testid="new-todo-input" onChange={handleChangeTodoInput} />
+      <input
+        data-testid="new-todo-input"
+        onChange={handleChangeTodoInput}
+        value={value}
+      />
       <button
         type="button"
         data-testid="new-todo-add-button"

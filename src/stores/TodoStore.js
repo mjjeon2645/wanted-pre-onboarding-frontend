@@ -60,6 +60,18 @@ export default class TodoStore extends Store {
       //
     }
   }
+
+  async modifyTodo(todo, text) {
+    try {
+      const status = await apiService.modifyTodo(todo, text);
+
+      if (status === 200) {
+        this.fetchTodos();
+      }
+    } catch (error) {
+      //
+    }
+  }
 }
 
 export const todoStore = new TodoStore();

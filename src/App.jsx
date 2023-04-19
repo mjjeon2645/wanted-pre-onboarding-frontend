@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 import { Routes, Route } from 'react-router-dom';
 
+import HomePage from './pages/HomePage';
 import SigninPage from './pages/SigninPage';
 import SignupPage from './pages/SignupPage';
 import TodoPage from './pages/TodoPage';
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <div>
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/todo" element={<TodoPage />} />

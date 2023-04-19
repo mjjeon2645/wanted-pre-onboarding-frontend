@@ -1,6 +1,8 @@
 import Todo from './commons/Todo';
 
-export default function TodoLists({ todos, handleChange, handleClickDelete }) {
+export default function TodoLists({
+  todos, handleChangeIsCompleted, handleClickDelete, handleClickSubmit,
+}) {
   return (
     todos.length ? (
       <ul>
@@ -8,8 +10,9 @@ export default function TodoLists({ todos, handleChange, handleClickDelete }) {
           <Todo
             key={item.id}
             todo={item}
-            handleChange={handleChange}
+            handleChangeIsCompleted={handleChangeIsCompleted}
             handleClickDelete={handleClickDelete}
+            handleClickSubmit={handleClickSubmit}
           />
         ))}
       </ul>

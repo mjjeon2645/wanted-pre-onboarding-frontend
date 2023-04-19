@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
+
 import TodoInput from '../components/TodoInput';
 import TodoLists from '../components/TodoLists';
 
@@ -43,6 +44,10 @@ export default function TodoPage() {
     await todoStore.deleteTodo(id);
   };
 
+  const handleClickSubmit = async (todo, text) => {
+    await todoStore.modifyTodo(todo, text);
+  };
+
   return (
     <>
       <TodoInput
@@ -51,8 +56,9 @@ export default function TodoPage() {
       />
       <TodoLists
         todos={todos}
-        handleChange={handleChangeIsCompleted}
+        handleChangeIsCompleted={handleChangeIsCompleted}
         handleClickDelete={handleClickDelete}
+        handleClickSubmit={handleClickSubmit}
       />
     </>
   );

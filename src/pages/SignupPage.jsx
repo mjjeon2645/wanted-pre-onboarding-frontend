@@ -32,9 +32,10 @@ export default function SignupPage() {
     userStore.setPassword(value);
   };
 
-  const handleClickSubmit = (event) => {
+  const handleClickSubmit = async (event) => {
     event.preventDefault();
-    userStore.signup();
+    await userStore.signup();
+    navigate('/signin');
   };
 
   return (

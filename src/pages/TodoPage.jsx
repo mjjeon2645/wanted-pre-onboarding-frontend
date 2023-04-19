@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -8,6 +8,7 @@ import TodoLists from '../components/TodoLists';
 import useTodoStore from '../hooks/useTodoStore';
 
 export default function TodoPage() {
+  const [inputText, setInputText] = useState('');
   const navigate = useNavigate();
   const todoStore = useTodoStore();
 
@@ -30,10 +31,12 @@ export default function TodoPage() {
   const handleChangeTodoInput = (event) => {
     const { value } = event.target;
     todoStore.setNewTodo(value);
+    setInputText(value);
   };
 
   const handleClickAddTodo = async () => {
     await todoStore.addTodo();
+    setInputText('');
   };
 
   const handleChangeIsCompleted = async (todo) => {
@@ -51,6 +54,7 @@ export default function TodoPage() {
   return (
     <>
       <TodoInput
+        value={inputText}
         handleChangeTodoInput={handleChangeTodoInput}
         handleClickAddTodo={handleClickAddTodo}
       />

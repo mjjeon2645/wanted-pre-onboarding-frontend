@@ -12,6 +12,7 @@ export default function Todo({
   };
 
   const handleClickCancel = () => {
+    setText(todo.todo);
     setIsModifyMode(!isModifyMode);
   };
 

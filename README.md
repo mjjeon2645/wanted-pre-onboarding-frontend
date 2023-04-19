@@ -1,3 +1,5 @@
 # wanted-pre-onboarding-frontend
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/A0j0UiWcKyU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+## 데모 영상
+
+[![데모영상](https://user-images.githubusercontent.com/104840243/233019083-fc59a192-4204-44cb-8d01-5c3f356ef037.png)](https://youtu.be/A0j0UiWcKyU)
